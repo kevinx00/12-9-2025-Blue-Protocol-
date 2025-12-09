@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Protocol Boss Timer Contact</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Contact</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="timers.html">Timers</a></li>
+                <li><a href="abtus.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="mailpage">
+            <h1><a href="https://mail.google.com/mail/?view=cm&fs=1&to=xu.k6@northeastern.edu" target="_blank">Contact Us Through Email</a></h1>
+            
+        </section>
+
+        <form id="contact-form">
+    <label for="fname">First Name:</label><br>
+    <input type="text" id="fname" name="fname" required>
+    <span class="error" id="fname-error"></span><br><br>
+
+    <label for="lname">Last Name:</label><br>
+    <input type="text" id="lname" name="lname" required>
+    <span class="error" id="lname-error"></span><br><br>
+
+    <label for="city">City:</label><br>
+    <input type="text" id="city" name="city" required>
+    <span class="error" id="city-error"></span><br><br>
+
+    <label for="zip">Zip Code:</label><br>
+    <input type="text" id="zip" name="zip" required>
+    <span class="error" id="zip-error"></span><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required>
+    <span class="error" id="email-error"></span><br><br>
+
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" rows="4" required></textarea>
+    <span class="error" id="message-error"></span><br><br>
+
+    <button type="submit">Send</button>
+        </form>
+
+
+
+    </main>
+
+    <footer>
+        <p>xu.k6@northeastern.edu</p>
+    </footer>
+
+
+<script>
+document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    let valid = true;
+
+
+    const fname = document.getElementById("fname");
+    const lname = document.getElementById("lname");
+    const city = document.getElementById("city");
+    const zip = document.getElementById("zip");
+    const email = document.getElementById("email");
+
+
+    function capFirst(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    }
+
+    fname.value = capFirst(fname.value.trim());
+    lname.value = capFirst(lname.value.trim());
+    city.value = capFirst(city.value.trim());
+
+
+    const zipPattern = /^[0-9]{5}$/;
+    if (!zipPattern.test(zip.value)) {
+        document.getElementById("zip-error").textContent = "ZIP must be 5 digits.";
+        valid = false;
+    } else {
+        document.getElementById("zip-error").textContent = "";
+    }
+
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email.value)) {
+        document.getElementById("email-error").textContent = "Enter a valid email.";
+        valid = false;
+    } else {
+        document.getElementById("email-error").textContent = "";
+    }
+
+    if (valid) {
+        alert("Form submitted successfully!");
+        this.submit();
+    }
+});
+</script>
+
+</body>
+</html>
